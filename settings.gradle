@@ -1,0 +1,2 @@
+include ':app', ':linkwifi'
+rootProject.name='My Application'

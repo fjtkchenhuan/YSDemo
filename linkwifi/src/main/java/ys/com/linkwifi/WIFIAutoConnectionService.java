@@ -34,7 +34,7 @@ public class WIFIAutoConnectionService extends Service {
     private Handler mHandler = new Handler(Looper.getMainLooper(), new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            Log.i("yuanhang","everConnected=="+WIFIConnectionManager.getInstance(WIFIAutoConnectionService.this).everConnected(mSsid));
+            Log.i(TAG,"everConnected=="+WIFIConnectionManager.getInstance(WIFIAutoConnectionService.this).everConnected(mSsid));
             WIFIConnectionManager.getInstance(WIFIAutoConnectionService.this).connect(mSsid, mPwd);
             boolean connected = WIFIConnectionManager.getInstance(WIFIAutoConnectionService.this).isConnected(mSsid);
             Log.d(TAG, "handleMessage: wifi connected = " + connected);

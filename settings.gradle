@@ -1,2 +1,2 @@
-include ':app', ':linkwifi'
+include ':app', ':linkwifi', ':wiegand'
 rootProject.name='My Application'

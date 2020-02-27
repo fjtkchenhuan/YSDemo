@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#643e3e3e"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/media_control_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/control_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="100dp"
+            android:src="@drawable/control_1" />
+
+        <ImageView
+            android:id="@+id/play_pre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/play_pre" />
+
+        <ImageView
+            android:id="@+id/play_or_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:src="@drawable/pause" />
+
+        <ImageView
+            android:id="@+id/play_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:src="@drawable/play_next" />
+
+        <ImageView
+            android:id="@+id/air_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/airplay" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SeekBar
+            android:id="@+id/video_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="100" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,2 +1,2 @@
-include ':app', ':linkwifi', ':wiegand', ':serialandgpiotest', ':gpiotest'
+include ':app', ':linkwifi', ':wiegand', ':serialandgpiotest', ':gpiotest', ':doubletouch'
 rootProject.name='My Application'

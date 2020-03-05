@@ -21,7 +21,7 @@ public class GpioUtils {
     /*
     给export申请权限
      */
-    public static void upgradeRootPermissionForExport(){
+    public static void upgradeRootPermissionForExport() {
         upgradeRootPermission("/sys/class/gpio/export");
     }
 
@@ -29,13 +29,13 @@ public class GpioUtils {
    配置一个gpio路径
     */
     public static boolean exportGpio(int gpio) {
-        return writeNode("/sys/class/gpio/export", ""+gpio);
+        return writeNode("/sys/class/gpio/export", "" + gpio);
     }
 
     /*
     给获取io口的状态的路径申请权限,该方法需要在exportGpio后调用
      */
-    public static void upgradeRootPermissionForGpio(int gpio){
+    public static void upgradeRootPermissionForGpio(int gpio) {
         upgradeRootPermission("/sys/class/gpio/gpio" + gpio + "/direction");
         upgradeRootPermission("/sys/class/gpio/gpio" + gpio + "/value");
     }
@@ -44,10 +44,10 @@ public class GpioUtils {
     /*
     设置io口为输入或输出
      */
-    public static boolean setGpioDirection(int gpio, int arg){
+    public static boolean setGpioDirection(int gpio, int arg) {
         String gpioDirection = "";
-        if(arg == 0) gpioDirection = "out";
-        else if(arg == 1) gpioDirection = "in";
+        if (arg == 0) gpioDirection = "out";
+        else if (arg == 1) gpioDirection = "in";
         else return false;
         return writeNode("/sys/class/gpio/gpio" + gpio + "/direction", gpioDirection);
     }
@@ -55,16 +55,16 @@ public class GpioUtils {
     /*
     获取io口的状态为输出还是输入
      */
-    public static String getGpioDirection(int gpio){
-        String gpioDirection ="";
+    public static String getGpioDirection(int gpio) {
+        String gpioDirection = "";
         gpioDirection = readNode("/sys/class/gpio/gpio" + gpio + "/direction");
-        return  gpioDirection;
+        return gpioDirection;
     }
 
     /*
     给输出io口写值，高电平或低电平
      */
-    public static boolean writeGpioValue(int gpio, String arg){
+    public static boolean writeGpioValue(int gpio, String arg) {
         return writeNode("/sys/class/gpio/gpio" + gpio + "/value", arg);
     }
 
@@ -78,7 +78,7 @@ public class GpioUtils {
         Process process = null;
         DataOutputStream os = null;
         try {
-            String cmd="chmod 777 " + path;
+            String cmd = "chmod 777 " + path;
             process = Runtime.getRuntime().exec("su"); //切换到root帐号
             os = new DataOutputStream(process.getOutputStream());
             os.writeBytes(cmd + "\n");
@@ -96,7 +96,7 @@ public class GpioUtils {
             }
         }
         try {
-            return process.waitFor()==0;
+            return process.waitFor() == 0;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -135,6 +135,7 @@ public class GpioUtils {
 
     private static long mTime = 0;
     private static int mFailTimes = 0;
+
     private static String readNode(String path) {
         String result = "";
 

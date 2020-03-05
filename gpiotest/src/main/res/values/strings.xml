@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">GpioTest</string>
+
+    <string name="invalid_gpio">Invalid GPIO</string>
+    <string name="valid_gpio">Valid GPIO</string>
+    <string name="current_io_type">current gpio type</string>
+    <string name="success_set_io_in">Successfully set the IO as an input port</string>
+    <string name="success_set_io_out">Successfully set the IO as an output port</string>
+    <string name="current_io_volt">current gpio voltage</string>
+    <string name="success_set_io_high">The IO high level was set successfully</string>
+    <string name="success_set_io_low">The IO low level was set successfully</string>
+
+    <string name="input_gpio_index">Please input gpio index</string>
+    <string name="check_io_available">Checks if the gpio is valid</string>
+    <string name="check_io_status">Check the gpio is input or output</string>
+    <string name="set_io_input">Set the gpio input mode</string>
+    <string name="set_io_output">Set the gpio output mode</string>
+    <string name="get_io_value">Get the value of gpio</string>
+    <string name="set_io_high">Set the gpio high value</string>
+    <string name="set_io_low">Set the gpio low value</string>
+    <string name="warn">only out gpio can set value</string>
 </resources>

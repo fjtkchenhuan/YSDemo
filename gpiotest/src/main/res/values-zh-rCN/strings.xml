@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">GpioTest</string>
+    
+    <string name="invalid_gpio">无效的GPIO</string>
+    <string name="valid_gpio">有效的GPIO</string>
+    <string name="current_io_type">当前io的类型</string>
+    <string name="success_set_io_in">成功设置该io为输入口</string>
+    <string name="success_set_io_out">成功设置该io为输出口</string>
+    <string name="current_io_volt">当前io的电平</string>
+    <string name="success_set_io_high">成功设置该io高电平</string>
+    <string name="success_set_io_low">成功设置该io低电平</string>
+
+    <string name="input_gpio_index">请输入gpio索引</string>
+    <string name="check_io_available">检测该索引是否有有效</string>
+    <string name="check_io_status">获取当前io口是输出还是输入</string>
+    <string name="set_io_input">设置为输入口</string>
+    <string name="set_io_output">设置为输出口</string>
+    <string name="get_io_value">获取当前io的值</string>
+    <string name="set_io_high">设置为高电平</string>
+    <string name="set_io_low">设置为低电平</string>
+    <string name="warn">只有输出口才可设置高低电平</string>
+</resources>

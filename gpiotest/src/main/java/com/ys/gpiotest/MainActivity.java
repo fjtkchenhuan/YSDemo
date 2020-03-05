@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText gpioIndex;
     private TextView inValidText;
@@ -39,39 +38,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.checkio:
                 String indexText = gpioIndex.getText().toString();
-                if ( !"".equals(indexText)) {
+                if (!"".equals(indexText)) {
                     index = Integer.parseInt(indexText);
                     if (GpioUtils.exportGpio(index)) {
                         GpioUtils.upgradeRootPermissionForGpio(index);
                         String status = GpioUtils.getGpioDirection(index);
                         if ("".equals(status))
-                            inValidText.setText("无效的GPIO");
+                            inValidText.setText(getText(R.string.invalid_gpio));
                         else
-                            inValidText.setText("有效的GPIO");
+                            inValidText.setText(getText(R.string.valid_gpio));
                     }
                 }
                 break;
             case R.id.get_io_status:
-                Toast.makeText(this,"当前io的类型 = " + GpioUtils.getGpioDirection(index),Toast.LENGTH_LONG).show();
+                ToastUtils.showToast(this, getString(R.string.current_io_type)+ ": "+GpioUtils.getGpioDirection(index));
                 break;
             case R.id.set_input:
                 if (GpioUtils.setGpioDirection(index, 1))
-                    Toast.makeText(this,"成功设置该io为输入口",Toast.LENGTH_LONG).show();
+                    ToastUtils.showToast(this, getString(R.string.success_set_io_in));
                 break;
             case R.id.set_output:
                 if (GpioUtils.setGpioDirection(index, 0))
-                    Toast.makeText(this,"成功设置该io为输出口",Toast.LENGTH_LONG).show();
+                    ToastUtils.showToast(this, getString(R.string.success_set_io_out));
                 break;
             case R.id.get_io_value:
-                Toast.makeText(this,"当前io的电平 = " + GpioUtils.getGpioValue(index),Toast.LENGTH_SHORT).show();
+                ToastUtils.showToast(this, getString(R.string.current_io_volt) + GpioUtils.getGpioValue(index));
                 break;
             case R.id.set_highvalue:
-                if (GpioUtils.writeGpioValue(index,"1"))
-                    Toast.makeText(this,"成功设置该io高电平",Toast.LENGTH_SHORT).show();
+                if (GpioUtils.writeGpioValue(index, "1"))
+                    ToastUtils.showToast(this, getString(R.string.success_set_io_high));
                 break;
             case R.id.set_lowvalue:
-                if (GpioUtils.writeGpioValue(index,"0"))
-                    Toast.makeText(this,"成功设置该io低电平",Toast.LENGTH_SHORT).show();
+                if (GpioUtils.writeGpioValue(index, "0"))
+                    ToastUtils.showToast(this, getString(R.string.success_set_io_low));
                 break;
             default:
                 break;

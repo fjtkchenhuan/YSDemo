@@ -11,15 +11,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
-import android.view.View;
-import android.widget.Button;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 public class MainActivity extends Activity {
     List<TextureView> surfaceViews;
@@ -91,8 +89,9 @@ public class MainActivity extends Activity {
         }
     }
 
-    MyCamera mMyCamera;
+
     class CameraSurface implements TextureView.SurfaceTextureListener {
+        MyCamera mMyCamera;
         String cameraId;
 
         public CameraSurface(Context context, String cameraId) {
@@ -120,6 +119,7 @@ public class MainActivity extends Activity {
 
         @Override
         public boolean onSurfaceTextureDestroyed(SurfaceTexture texture) {
+
             return true;
         }
 

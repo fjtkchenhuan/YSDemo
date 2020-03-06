@@ -23,9 +23,6 @@ import android.util.SparseIntArray;
 import android.view.Surface;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
@@ -35,7 +32,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
+
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 
 /**
  * Created by Administrator on 2019/7/29.

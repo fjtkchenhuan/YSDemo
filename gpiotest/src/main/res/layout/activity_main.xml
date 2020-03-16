@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context="com.ys.gpiotest.MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
 
     <EditText
         android:id="@+id/gpio_index"
@@ -16,28 +23,25 @@
 
     <Button
         android:id="@+id/checkio"
-        android:layout_toRightOf="@+id/gpio_index"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/check_io_available"/>
 
     <TextView
         android:id="@+id/invalid"
-        android:layout_toRightOf="@+id/checkio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#f91804"
         android:textSize="20sp"
-        android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp" />
 
+    </LinearLayout>
+
     <LinearLayout
-        android:id="@+id/layout_status"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/gpio_index">
+        android:layout_marginTop="20dp">
 
         <Button
             android:id="@+id/get_io_status"
@@ -62,8 +66,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@+id/layout_status"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
 
@@ -98,4 +101,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

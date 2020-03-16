@@ -3,6 +3,7 @@ package com.ys.gpiotest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,7 +52,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.get_io_status:
-                ToastUtils.showToast(this, getString(R.string.current_io_type)+ ": "+GpioUtils.getGpioDirection(index));
+                String status = getString(R.string.current_io_type)+ ": "+GpioUtils.getGpioDirection(index);
+                ToastUtils.showToast(this, status);
                 break;
             case R.id.set_input:
                 if (GpioUtils.setGpioDirection(index, 1))
@@ -62,7 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     ToastUtils.showToast(this, getString(R.string.success_set_io_out));
                 break;
             case R.id.get_io_value:
-                ToastUtils.showToast(this, getString(R.string.current_io_volt) + GpioUtils.getGpioValue(index));
+                String value = getString(R.string.current_io_volt) + GpioUtils.getGpioValue(index);
+                ToastUtils.showToast(this, value);
                 break;
             case R.id.set_highvalue:
                 if (GpioUtils.writeGpioValue(index, "1"))

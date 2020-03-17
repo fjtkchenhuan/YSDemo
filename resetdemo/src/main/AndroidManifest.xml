@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".CameraReceiver">
+            <intent-filter>
+                <action android:name="com.ys.camera_add"/>
+                <action android:name="com.ys.camera_remove"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

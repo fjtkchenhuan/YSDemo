@@ -2,6 +2,7 @@ package com.ys.doubletouch;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Instrumentation;
 import android.app.Presentation;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.hardware.display.DisplayManager;
 import android.media.MediaRouter;
 import android.os.Build;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn2).setOnClickListener(this);
         findViewById(R.id.btn3).setOnClickListener(this);
         findViewById(R.id.btn4).setOnClickListener(this);
+        findViewById(R.id.btn5).setOnClickListener(this);
 
     }
 
@@ -95,8 +98,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     myPresentation.dismiss();
                     myPresentation = null;
                 }
+            case R.id.btn5:
+                sendKeyCode2(24);
+                SystemClock.sleep(50);
+                sendKeyCode2(67);
+                break;
+            default:
                 break;
         }
+    }
+
+    private void sendKeyCode2(final int keyCode) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // 创建一个Instrumentation对象
+                    Instrumentation inst = new Instrumentation();
+                    // 调用inst对象的按键模拟方法
+                    inst.sendKeyDownUpSync(keyCode);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
 

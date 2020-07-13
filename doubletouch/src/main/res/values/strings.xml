@@ -3,12 +3,13 @@
 
     <string name="show_mr">主副屏异显方法</string>
     <string name="show_dm">主副屏异显方法2</string>
-    <string name="change">改变副屏颜色</string>
+    <string name="change">改变副屏文字</string>
     <string name="cancel">退出异显</string>
     <string name="presentation">当前是副屏页面</string>
     <string name="display">RK双屏异显功能</string>
     <string name="touch">RK双触功能</string>
     <string name="jump">跳转到第二个activity</string>
+    <string name="key_jump">按键的方式进入双屏异显</string>
 
     <string name="first">这是你第一次操作我，我是副屏，我是由另一个触摸屏操控的</string>
     <string name="second">是不是傻，点了还点，我是副屏，我是由另一个触摸屏操控的</string>

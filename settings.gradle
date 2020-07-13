@@ -1,3 +1,4 @@
+include ':doublenet'
 include ':javaapkcomComAssistant'
 include ':adjustvolume'
 include ':app', ':linkwifi', ':wiegand', ':serialandgpiotest', ':gpiotest', ':doubletouch', ':twoscreen', ':muiltcamera', ':muiltcamerademo', ':serialsendandaccept', ':libuvccamera', ':resetdemo'

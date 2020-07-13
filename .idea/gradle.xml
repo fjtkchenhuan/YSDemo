@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/adjustvolume" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/doublenet" />
             <option value="$PROJECT_DIR$/doubletouch" />
             <option value="$PROJECT_DIR$/gpiotest" />
             <option value="$PROJECT_DIR$/h5" />

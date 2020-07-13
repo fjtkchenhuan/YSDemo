@@ -20,7 +20,7 @@ public class MyService extends Service implements SerialPortUtils.OnDataReceiveL
     @Override
     public void onCreate() {
         super.onCreate();
-        serialPortUtils = new SerialPortUtils();
+        serialPortUtils = new SerialPortUtils("",9600);
         serialPortUtils.setOnDataReceiveListener(this);
         serialPortUtils.openSerialPort();
         handler = new Handler();

@@ -29,34 +29,63 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
+    /**
+     * 9.0替换开机动画
+     *  String[] commands = new String[7];
+     *             commands[0] = "mount -o rw,remount -t ext4 /oem";
+     *             commands[1] = "rm -rf oem/media/bootanimation.zip";
+     *             commands[2] = "cp  " + path + " oem/media/bootanimation.zip";
+     *             commands[3] = "chmod 644 oem/media/bootanimation.zip";
+     *             commands[4] = "sync";
+     *             commands[5] = "mount -o ro,remount -t ext4 /oem";
+     *             commands[6] = "reboot";
+     *             for (int i = 0; i < commands.length; i++)
+     *                 Utils.execFor7(commands[i]);
+     *
+     * 9.0 操作system目录下的命令
+     * blockdev --setrw /dev/block/by-name/system
+     * mount -o rw,remount /
+     * mount -o ro,remount /
+     */
+
     private void init(){
         handler = new Handler(new Callback(this));
         filePath = Environment.getExternalStorageDirectory() + File.separator;
         Log.d("ddd", "filePath = " + filePath);
-        fileUtils = new FileUtils(this, "YSReceiver.apk", filePath);
+        fileUtils = new FileUtils(this, "Launcher3.apk", filePath);
         fileUtils.copy();
+//        fileUtils = new FileUtils(this, "libcwatchdog.so", filePath);
+//        fileUtils.copy();
+//        fileUtils = new FileUtils(this, "libttsplusmsc.so", filePath);
+//        fileUtils.copy();
 
         String[] commands;
-        commands = new String[6];
+        commands = new String[7];
         commands[0] = "mount -o rw,remount -t ext4 /system";//"mount -o rw,remount /system";
-        commands[1] = "rm -rf /system/app/YSReceiver/YSReceiver.apk";
-        commands[2] = "cp  "+ filePath + "YSReceiver.apk" + " /system/app/YSReceiver/YSReceiver.apk";
-        commands[3] = "chmod 755 /system/app/YSReceiver/YSReceiver.apk";
-        commands[4] = "sync";
-        commands[5] = "mount -o ro,remount -t ext4 /system";
+        commands[1] = "rm -rf /system/app/Launcher3/Launcher3.apk";
+        commands[2] = "rm -rf /system/app/Launcher3/oat";
+//        commands[2] = "rm -rf /system/app/kdxf_3.0/lib";
+        commands[3] = "cp  "+ filePath + "Launcher3.apk" + " system/app/Launcher3/Launcher3.apk";
+//        commands[4] = "cp  "+ filePath + "libcwatchdog.so" + " /system/lib/libcwatchdog.so";
+//        commands[5] = "cp  "+ filePath + "libttsplusmsc.so" + " /system/lib/libttsplusmsc.so";
+        commands[4] = "chmod 755 system/app/Launcher3/Launcher3.apk";
+//        commands[7] = "chmod 755 /system/lib/libcwatchdog.so";
+//        commands[8] = "chmod 755 /system/lib/libttsplusmsc.so";
+        commands[5] = "sync";
+        commands[6] = "mount -o ro,remount -t ext4 /system";
         for (int i = 0; i < commands.length; i++) {
-            Log.d("ddd", "execCmd3(commands[i]) = " + commands[i]);
+//            Log.d("ddd", "execCmd3(commands[i]) = " + commands[i]);
             RootCmd.execFor7(commands[i]);
         }
 
-        Toast.makeText(this, "replace YSReceiver", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "替换Launcher3", Toast.LENGTH_LONG).show();
         handler.postDelayed(uninstallAPP, 5000);
     }
 
     private Runnable uninstallAPP = new Runnable() {
         @Override
         public void run() {
-            Log.d("ddd","delete = " + fileUtils.deleteFile(filePath + "YSReceiver.apk"));
+            Log.d("ddd","delete = " + fileUtils.deleteFile(filePath + "Launcher3.apk"));
             uninstallApk("com.ys.replacesystemfile");
         }
     };

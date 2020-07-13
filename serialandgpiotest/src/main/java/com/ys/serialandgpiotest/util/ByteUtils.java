@@ -207,6 +207,7 @@ public class ByteUtils {
         }
         return new byte[0];
     }
+
     public static byte[] hex2byte(String hex) {
         String digital = "0123456789ABCDEF";
         String hex1 = hex.replace(" ", "");

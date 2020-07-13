@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="播放音乐" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnUpper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="增大音量" />
+
+        <Button
+            android:id="@+id/btnLower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="减小音量" />
+
+        <ToggleButton
+            android:id="@+id/tbMute"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:checked="true"
+            android:textOff="静音"
+            android:textOn="正常" />
+    </LinearLayout>
+</LinearLayout>

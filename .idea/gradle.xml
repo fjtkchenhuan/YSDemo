@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/adjustvolume" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/doubletouch" />
+            <option value="$PROJECT_DIR$/gpiotest" />
+            <option value="$PROJECT_DIR$/h5" />
+            <option value="$PROJECT_DIR$/javaapkcomComAssistant" />
+            <option value="$PROJECT_DIR$/libuvccamera" />
+            <option value="$PROJECT_DIR$/linkwifi" />
+            <option value="$PROJECT_DIR$/memtester2g" />
+            <option value="$PROJECT_DIR$/muiltcamera" />
+            <option value="$PROJECT_DIR$/muiltcamerademo" />
+            <option value="$PROJECT_DIR$/replacebootanimation" />
+            <option value="$PROJECT_DIR$/replacesystemfile" />
+            <option value="$PROJECT_DIR$/resetdemo" />
+            <option value="$PROJECT_DIR$/serialandgpiotest" />
+            <option value="$PROJECT_DIR$/serialsendandaccept" />
+            <option value="$PROJECT_DIR$/stressapptest2g" />
+            <option value="$PROJECT_DIR$/twoscreen" />
+            <option value="$PROJECT_DIR$/wiegand" />
+          </set>
+        </option>
         <option name="resolveModulePerSourceSet" value="false" />
-        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>

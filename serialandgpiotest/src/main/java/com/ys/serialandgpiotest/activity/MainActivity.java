@@ -12,24 +12,35 @@ import android.widget.Toast;
 import com.ys.serialandgpiotest.R;
 import com.ys.serialandgpiotest.Service.MyService;
 import com.ys.serialandgpiotest.util.GpioUtils;
+import com.ys.serialandgpiotest.util.SerialPortUtils;
+import com.ys.serialandgpiotest.util.SerialPortUtils1;
 
 import java.io.File;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SerialPortUtils.OnDataReceiveListener, SerialPortUtils1.OnDataReceiveListener {
 
     private TextView textView;
     private Handler handler;
+    private SerialPortUtils serialPortUtils1;
+    private SerialPortUtils1 serialPortUtils2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         handler = new Handler();
-
         initGpio();
 
-        Intent intent1 = new Intent(MainActivity.this, MyService.class);
-        startService(intent1);
+        serialPortUtils1 = new SerialPortUtils("/dev/ttyS3",9600);
+        serialPortUtils1.setOnDataReceiveListener(this);
+        serialPortUtils1.openSerialPort();
+
+        serialPortUtils2 = new SerialPortUtils1("/dev/ttyS0",9600);
+        serialPortUtils2.setOnDataReceiveListener(this);
+        serialPortUtils2.openSerialPort();
+
+//        Intent intent1 = new Intent(MainActivity.this, MyService.class);
+//        startService(intent1);
 
 
         textView = findViewById(R.id.text);
@@ -40,17 +51,33 @@ public class MainActivity extends Activity {
             textView.setText("锁开启");
         handler.postDelayed(showIo3, 3000);
 
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GpioUtils.writeNode("/sys/class/backlight/backlight1/brightness","220");
-//                String value = GpioUtils.getGpioValue(170);
-//                if ("0".equals(value))
-//                    GpioUtils.writeGpioValue(170,"1");
-//                else
-//                    GpioUtils.writeGpioValue(170,"0");
+                for (int i = 0; i < 100; i++) {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    serialPortUtils2.sendSerialPort("11111111");
+                }
+
             }
         });
+//        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                for (int i = 0; i < 100; i++) {
+//                    try {
+//                        Thread.sleep(5000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    serialPortUtils1.sendSerialPort("22222222");
+//                }
+//            }
+//        });
 
 //        Intent intent = getIntent();
 //        String value = intent.getStringExtra("io3Value");
@@ -101,5 +128,15 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onDataReceive(byte[] buffer, int size) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

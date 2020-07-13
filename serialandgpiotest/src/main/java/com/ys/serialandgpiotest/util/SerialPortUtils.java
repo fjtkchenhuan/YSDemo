@@ -23,6 +23,11 @@ public class SerialPortUtils {
     public OutputStream outputStream = null;
 //    public ChangeTool changeTool = new ChangeTool();
 
+    public SerialPortUtils(String path,int baudrate) {
+        this.path = path;
+        this.baudrate = baudrate;
+    }
+
 
     /**
      * 打开串口

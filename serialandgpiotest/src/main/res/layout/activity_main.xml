@@ -16,10 +16,18 @@
         android:textSize="36sp"
         android:textColor="#EC0909" />
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textSize="28sp"
-        android:text="控制USB"/>
+        android:text="串口0发送"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:text="串口3发送"/>
 </LinearLayout>

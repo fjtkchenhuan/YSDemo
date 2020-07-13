@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SerialSendAndAccept</string>
+
+    <string name="test_serialport_path">设备</string>
+    <string name="test_serialport_rate">波特率</string>
+    <string name="test_serialport_start">开始</string>
+</resources>

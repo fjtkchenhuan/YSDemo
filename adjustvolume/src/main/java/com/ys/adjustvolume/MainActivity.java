@@ -9,11 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnPlay = null, btnUpper = null, btnLower = null;
+    private Button btnPlay = null, btnUpper = null, btnLower = null,btnStop = null;
     private ToggleButton tbMute = null;
     private MediaPlayer mediaPlayer = null; //声频
     private AudioManager audioManager = null; //音频
@@ -26,9 +27,11 @@ public class MainActivity extends AppCompatActivity {
         btnPlay = (Button) findViewById(R.id.btnPlay);
         btnUpper = (Button) findViewById(R.id.btnUpper);
         btnLower = (Button) findViewById(R.id.btnLower);
+        btnStop = findViewById(R.id.btnStop);
         btnPlay.setOnClickListener(listener);
         btnUpper.setOnClickListener(listener);
         btnLower.setOnClickListener(listener);
+        btnStop.setOnClickListener(listener);
         tbMute = (ToggleButton) findViewById(R.id.tbMute);
         tbMute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -46,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
                     mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.ap);
                     mediaPlayer.setLooping(true);//设置循环播放
                     mediaPlayer.start();//播放声音
+                    break;
+                case R.id.btnStop:
+                    mediaPlayer.pause();
+//                    mediaPlayer.stop();
                     break;
                 case R.id.btnUpper:
                     //adjustStreamVolume: 调整指定声音类型的音量

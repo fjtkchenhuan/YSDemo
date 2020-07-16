@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView txEthIp;
     private TextView txEthStatus;
     private TextView txWifiStatus;
+    private TextView txEthPingIp;
+    private TextView txWifiPingIp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txEthIp = findViewById(R.id.eth_ip);
         txEthStatus = findViewById(R.id.eth_status);
         txWifiStatus = findViewById(R.id.wifi_status);
+        txEthPingIp = findViewById(R.id.ping_eth_ip);
+        txWifiPingIp = findViewById(R.id.ping_wifi_ip);
 
         findViewById(R.id.check_eth).setOnClickListener(this);
         findViewById(R.id.check_wifi).setOnClickListener(this);
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.check_eth:
                 String ethIp = "";
+                String gataway = manager.getGateway();
                 if ("DHCP".equals(manager.getEthMode()))
                     ethIp = manager.getDhcpIpAddress();
                 else if ("StaticIp".equals(manager.getEthMode()))
@@ -46,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txEthIp.setText("以太网IP：" + ethIp);
 
                 if (Utils.isEthNetworkAvailable(this)) {
-                    if (Utils.isPingSuccess(ethIp))
+                    if (Utils.isPingSuccess(gataway))
                         txEthStatus.setText("以太网连接正常");
                      else
                         txEthStatus.setText("以太网连接异常");
@@ -54,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this,"以太网未连接",Toast.LENGTH_LONG).show();
                     txEthStatus.setText("以太网未连接，请检查网线和开关");
                 }
+
+                txEthPingIp.setText("以太网ping的网关是："+gataway);
                 break;
             case R.id.check_wifi:
                 if (Utils.isWifiNetworkAvailable(this)) {
@@ -64,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     txWifiStatus.setText("wifi未连接，请先连接好wifi");
                 }
+                txWifiPingIp.setText("wifi ping的地址是：www.baidu.com");
                 break;
             default:
                 break;
